@@ -1,0 +1,12 @@
+{
+
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "msedge",
+            "request": "launch",
+            "name": "Open my.html",
+            "file": "c:\\Users\\Raj Shekhar\\OneDrive\\문서\\POLARIS CLASSES\\JavaScript class\\index.html\\my.html"
+        }
+    ]
+}

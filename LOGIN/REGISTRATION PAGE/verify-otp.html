@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HEALTHMITRA</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background: linear-gradient(to bottom, white, green);
+      }
+      .container {
+        height: 220px;
+        width: 250px;
+        color: #ff2323;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+        border-radius: 15px;
+        background-color: rgba(255, 255, 255, 0.5);
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+      }
+      .inp {
+        background: transparent;
+      }
+      input {
+        width: 25px;
+        height: 25px;
+        margin: 8px 3px;
+        font-size: 18px;
+        border: 1px solid #2ec8ee;
+        border-radius: 5px;
+        text-align: center;
+        color: #4cd137;
+        background: transparent;
+      }
+      button {
+        width: 100px;
+        height: 25px;
+        margin: 10px 4px;
+        color: hwb(182 22% 18%);
+        font-size: 18px;
+        border: 3px solid hwb(182 22% 18%);
+        border-radius: 10px;
+        background: transparent;
+      }
+      h3 {
+        color: blue;
+      }
+      p {
+        color: blue; 
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+        <h2>Enter OTP</h2>
+        <form id="verifyForm">
+            <label for="email">Email</label>
+            <input type="email" id="email" required>
+            <br>
+            <label for="otp">OTP</label>
+            <input type="text" id="otp" required>
+            <br>
+            <button type="button" onclick="verifyOTP()">Verify OTP</button>
+        </form>
+    </div>
+
+    <script>
+        function verifyOTP() {
+            const email = document.getElementById('email').value;
+            const otp = document.getElementById('otp').value;
+
+            fetch('/verify-otp', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, otp })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message === 'OTP verified successfully') {
+                    alert('OTP verified successfully');
+                    // Redirect to another page or show success message
+                } else {
+                    alert('Invalid OTP');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>

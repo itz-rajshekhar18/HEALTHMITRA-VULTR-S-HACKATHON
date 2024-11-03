@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lean Meat Recipe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9dada;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        header{
+            background-color: transparent;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            border-bottom: 1px solid #e5aebc;
+            box-sizing: border-box;
+        }
+        header .top-bar {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: bold;
+            color: #555;
+        }
+        header .back-arrow {
+            font-size: 18px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        header .title{
+            flex: 1;
+            text-align: center;
+            font-size: 16px;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+        }
+        .recipe-card {
+            width: 800px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .recipe-card h1 {
+            font-size: 24px;
+            text-align: center;
+            color: #333;
+        }
+        .recipe-card img {
+            display: block;
+            width: 100%;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+        .section-title {
+            color: #d9534f;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .ingredients-list, .instructions-list {
+            background-color: #f2f2f2;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 5px;
+            line-height: 1.6;
+        }
+        .instructions-list {
+            list-style-type: decimal;
+        }
+        .youtube-link {
+            text-align: center;
+            display: block;
+            margin-top: 20px;
+            color: #ff0000;
+            text-decoration: none;
+        }
+        .youtube-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="recipe-card">
+        <header>
+            <a href="nutritionalChart.html" class="back-arrow">&larr;</a>
+            <h1 class="title">Spinach And Cheese Omelette Recipe</h1>
+        </header>
+        <br>
+        <br>
+        <img src="https://imgs.search.brave.com/wg9saKIT5nT8qsoYYqUXorQIGPZ5_z71vHpsP-ftPyw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Y3Vpc2luZWZpZW5k/LmNvbS9SZWNpcGVJ/bWFnZXMvU3BpbmFj/aCUyMGFuZCUyMGNo/ZWVzZSUyMG9tZWxl/dHRlL3NwaW5hY2gt/b21lbGV0dGUtMi5q/cGc" alt="Spinach and Cheese Omelette">
+        <br>
+        <br>
+        <div class="section-title">Ingredients:</div>
+        <div class="ingredients-list">
+            <p>2 large eggs</p>
+            <p>1/2 cup spinach, chopped</p>
+            <p>1/4 cup grated cheese (cheddar or feta)</p>
+            <p>Salt and pepper to taste</p>
+            <p>1 tsp olive oil</p>
+        </div>
+        <br>
+        <br>
+        <div class="section-title">Instructions:</div>
+        <div class="instructions-list" >
+            <li>Heat the olive oil in a non-stick pan.</li>
+            <li>Sauté the spinach until wilted.</li>
+            <li>In a bowl, beat the eggs, add cheese, salt, and pepper.</li>
+            <li>Pour the egg mixture over the spinach in the pan.</li>
+            <li>Cook until the omelette sets, flipping halfway.</li>
+            <li>Serve warm with whole-grain toast.</li>
+        </div>
+        <br>
+        <br> 
+        <a href="https://youtu.be/0KgwThTF93A?si=Ru-0Hw_eJG36m2N-" class="youtube-link">Watch the recipe on YouTube</a>
+    </div>
+</body>
+</html>

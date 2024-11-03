@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pregnancy Tracker</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #fce4ec;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            width: 100%;
+            max-width: 800px;
+            height: 100vh;
+            max-height: 600px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            overflow-y: auto;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: 20px;
+            color: #000000;
+        }
+        .header a {
+            color: #000000;
+            text-decoration: none;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+        }
+        .header a:hover {
+            color: #e57373;
+        }
+        .header .title {
+            flex-grow: 1;
+            text-align: center;
+            font-weight: bold;
+            font-size: 24px;
+            margin-left: -24px; /* Adjust this margin to center-align the title */
+        }
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .tabs span {
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .tabs span.active {
+            font-weight: bold;
+        }
+        .circle-chart {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            border: 15px solid #ff5252;
+        }
+        .circle-chart .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 22px;
+            color: #ff5252;
+            text-align: center;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .stats div {
+            font-size: 14px;
+            color: #333;
+        }
+        .appointment {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .appointment a {
+            color: #ff5252;
+            text-decoration: none;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #ff5252;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header with back arrow and title -->
+        <div class="header">
+            <a href="main.html">&#8592;</a> <!-- Left arrow for back navigation -->
+            <span class="title">PREGNANCY</span>
+        </div>
+        <br>
+        <br>
+        <!-- Tabs -->
+        <div class="tabs">
+            <span onclick="changeMonth('JANUARY', this)">JANUARY</span>
+            <span onclick="changeMonth('FEBRUARY', this)">FEBRUARY</span>
+            <span onclick="changeMonth('MARCH', this)" class="active">MARCH</span>
+            <span onclick="changeMonth('APRIL', this)">APRIL</span>
+            <span onclick="changeMonth('MAY', this)">MAY</span>
+            <span onclick="changeMonth('JUNE', this)">JUNE</span>
+        </div>
+
+        <!-- Circle Chart -->
+        <div class="circle-chart">
+            <div class="text" id="periodText">400<br>days in period</div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats">
+            <div>
+                <img src="https://imgs.search.brave.com/5tYNaTYkoz5FyJHH2gI8UhH-t00GDEsjXaWMrCfmJLM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA4LzQ5LzU1LzMz/LzM2MF9GXzg0OTU1/MzM1NV9tV2JZNTNr/bHI2SHl4ZThId1VH/UTduNWIzcjlPR3Ew/dS5qcGc" alt="Weight icon" width="50px" height="50px">
+                <p>Weight</p>
+                <strong id="weight">54 kg</strong>
+            </div>
+            <div>
+                <img src="https://imgs.search.brave.com/wWIOOw-VK_eub8uHJGs4IRoEUHW6n_9DKlnxMu7f_Cw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA2LzEwLzAzLzQy/LzM2MF9GXzYxMDAz/NDI4MF8wUHJ1MzNv/OHp2OWhWWWJzWFZh/VVNCNmFHb05ZbUs5/ay5qcGc" alt="Rate icon" width="50px" height="50px">
+                <p>Sleep Rate</p>
+                <strong id="sleepRate">7 hr/d</strong>
+            </div>
+            <div>
+                <img src="https://imgs.search.brave.com/q-qchr8hs8WqiHBDEMRSV1yV63GtoQJDxBvhcfLg34Q/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA5Lzk4LzQxLzU5/LzM2MF9GXzk5ODQx/NTk1Nl95NjRocTJS/alFwOVlpeTVBZGFD/VWhmNEFuMnNVMkJh/WS5qcGc" alt="Water icon" width="50px" height="50px">
+                <p>Water</p>
+                <strong id="water">3 l/d</strong>
+            </div>
+        </div>
+
+        <!-- Appointment Information -->
+        <div class="appointment">
+            Next Appointment with Doctor<br>
+            Date: <span id="appointmentDate">10 March</span><br>
+            Meeting Link: <a href="#" id="meetingLink">https://meet.google.com/xyz</a>
+        </div>
+
+        <!-- View Details Button -->
+        <a href="pregnancyDetails.html" class="button">View Details</a>
+    </div>
+
+    <script>
+        const data = {
+            "JANUARY": {
+                periodDays: 400,
+                weight: "52 kg",
+                sleepRate: "8 hr/d",
+                water: "3.5 l/d",                
+                appointmentDate: "5 January",
+                meetingLink: "https://meet.google.com/abc"
+            },
+            "FEBRUARY": {
+                periodDays: 369,
+                weight: "53 kg",
+                sleepRate: "7.5 hr/d",
+                water: "3 l/d",
+                appointmentDate: "10 Feburary",
+                meetingLink: "https://meet.google.com/mnu-xya-lgbt"
+            },
+            "MARCH": {
+                periodDays: 341,
+                weight: "56 kg",
+                sleepRate: "7 hr/d",
+                water: "3 l/d",
+                appointmentDate: "12 March",
+                meetingLink: "https://meet.google.com/xyzz"
+            },
+            "APRIL" : {
+                periodDays: 310,
+                weight: "57 kg",
+                sleepRate: "7 hr/d",
+                water: "3 l/d",                
+                appointmentDate: "20 April",
+                meetingLink: "https://meet.google.com/ljk-rzu-qwrt"
+            },
+            "MAY" : {
+                periodDays: 280,
+                weight: "62 kg",
+                sleepRate: "7 hr/d",
+                water: "3 l/d",
+                appointmentDate: "1 May",
+                meetingLink: "https://meet.google.com/abc"
+            },
+            "JUNE" : {
+                periodDays: 249,
+                weight: "65 kg",
+                sleepRate: "7 hr/d",
+                water: "3 l/d",
+                appointmentDate: "5 June",
+                meetingLink: "https://meet.google.com/abc"
+            }
+        };
+
+        function changeMonth(month, element) {
+            // Remove the active class from all tabs
+            document.querySelectorAll('.tabs span').forEach(tab => tab.classList.remove('active'));
+            // Add the active class to the clicked tab
+            element.classList.add('active');
+
+            // Update data based on selected month
+            const monthData = data[month];
+            document.getElementById("periodText").innerHTML = `${monthData.periodDays}<br>days in period`;
+            document.getElementById("weight").innerText = monthData.weight;
+            document.getElementById("sleepRate").innerText = monthData.sleepRate;
+            document.getElementById("water").innerText = monthData.water;
+            document.getElementById("appointmentDate").innerText = monthData.appointmentDate;
+            document.getElementById("meetingLink").setAttribute("href", monthData.meetingLink);
+            document.getElementById("meetingLink").innerText = monthData.meetingLink;
+
+            // Calculate color intensity based on periodDays
+            const maxDays = 400;
+            const colorIntensity = Math.floor((monthData.periodDays / maxDays) * 255);
+            element.style.color = `rgb(255, ${255 - colorIntensity}, ${255 - colorIntensity})`;
+        }
+    </script>
+</body>
+</html>

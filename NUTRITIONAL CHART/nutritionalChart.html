@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nutritional Chart</title>
+  <!-- Link to Bootstrap CSS for Carousel -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    body {
+      background-color: #f8c9d3;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: #fff;
+      width: 800px;
+      max-height: 100vh;
+      border-radius: 15px;
+      overflow-y: auto;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background: linear-gradient(to bottom, #f8c9d3 0%, #fff 70%);
+    }
+
+    .header {
+      background-color: transparent;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      border-bottom: 1px solid #e5aebc;
+      box-sizing: border-box;
+    }
+
+    .header .top-bar {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: bold;
+      color: #555;
+    }
+
+    .header .back-arrow {
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .header .title {
+      flex: 1;
+      text-align: center;
+      font-size: 16px;
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    .info-container {
+      padding: 15px 20px;
+      text-align: left;
+      color: #333;
+    }
+
+    .info-container p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .info-container p:first-child {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    /* Carousel Styling */
+    .carousel-inner img {
+      width: 100%;
+      height: 400px;
+      border-radius: 15px;
+    }
+
+    .carousel-caption {
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 10px;
+      padding: 10px;
+    }
+
+    .carousel-caption h5, .carousel-caption p {
+      color: #fff;
+    }
+
+    /* Food List Styling */
+    .food-list {
+      padding: 20px;
+    }
+
+    .food-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .food-item img {
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+
+    .food-item p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .food-item span {
+      display: block;
+      font-size: 12px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <div class="top-bar">
+        <span class="back-arrow">&larr;</span>
+        <div class="title">NUTRITIONAL CHART</div>
+      </div>
+    </div>
+    
+    <div class="info-container">
+      <p>Hi, Anna</p>
+      <p>You are 28 weeks Pregnant</p>
+    </div>
+
+    <!-- Carousel Content -->
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <a href="spinachAndCheeseOmelette.html"><img src="https://imgs.search.brave.com/O3Qj67mHtmhs_N82zxgAgmOK4prD4z3_CavM8fhv09Q/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuY3RmYXNzZXRz/Lm5ldC91dzd5aXUy/a3VpZ2MvYzg2ZmUw/MmIxNzQyMDQ2Mjhk/MjcyMzdiNTk2ZWJi/NGRjYTQ1NDk4MDRm/NGNjM2JmMzMxMWIw/MzQxYjQzMTU1OC84/Nzk5NGNmMjg2OGMz/ZmU4ZmM1ZjZkODZl/MDI2OTMyMi9vbWVs/ZXRsZWFkLmpwZw" class="d-block w-100" alt="Spinach and Cheese Omelette">
+          <div class="carousel-caption d-none d-md-block"></a>
+            <h5>Spinach and Cheese Omelette</h5> 
+            <p><strong>Benefits: </strong>High in protein, calcium, and folic acid, this is great for bone health and fetal development.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+            <a href="leanMeat.html"><img src="https://imgs.search.brave.com/PBSqWf1ldr55zhNhum0QipmAgorSwNGHCdvtWbr7rig/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvODgy/NTQ4MzQ0L3Bob3Rv/L2dyaWxsZWQtYmVl/Zi1zdGVha3MuanBn/P3M9NjEyeDYxMiZ3/PTAmaz0yMCZjPUtX/aHdhbk8wbEl3YWxQ/WS1DdG1ZOUJET3NK/N1FZYS1vT25xRWFf/aEt2VU09" class="d-block w-100" alt="Lean Meat">
+          <div class="carousel-caption d-none d-md-block"></a>
+            <h5>Lean Meat</h5>
+            <p><strong>Benefits: </strong>It provides high-quality protein with essential nutrients, supporting muscle health, weight management, and heart health with low saturated fat.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+            <a href="salmonAndVeggie.html"><img src="https://imgs.search.brave.com/LIAX8EfTaHdnr5v8e3_T6pV89TrIwzr0WfB-0qwgbzc/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/ZGlubmVyYXR0aGV6/b28uY29tL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDE4LzA2L3Nh/bG1vbi1mb2lsLXBh/Y2tldHMtNS5qcGc" class="d-block w-100" alt="Salmon and Veggie Foil Packets"></a>
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Salmon and Veggie Foil Packets</h5>
+            <p><strong>Benefits: </strong>Packed with omega-3 fatty acids for fetal brain development and high-quality protein.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+            <a href="lentilAndVeggieSoup.html"><img src="https://imgs.search.brave.com/-Nz6bJNDAOE_M14NGWAUNaMt3lZcLs40_Sgxx1dUi9k/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuaW1tZWRpYXRl/LmNvLnVrL3Byb2R1/Y3Rpb24vdm9sYXRp/bGUvc2l0ZXMvMzAv/MjAyMC8wOC93aW50/ZXItc291cC02NWM4/MzdiLmpwZz9xdWFs/aXR5PTkwJnJlc2l6/ZT00NDAsNDAw" class="d-block w-100" alt="Lentil and Vegetable Soup">
+            <div class="carousel-caption d-none d-md-block"></a>
+              <h5>Lentil and Vegetable Soup</h5>
+              <p><strong>Benefits: </strong>High in fiber, protein, iron, and folate. Lentils help prevent anemia and promote fetal growth.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <a href="sweetPotatowithAvacado.html"><img src="https://imgs.search.brave.com/zQVY6bFgjtYpbfDdnPmxJz38Jv10feekymNqADjjp_E/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90d29z/cG9vbnMuY2Evd3At/Y29udGVudC91cGxv/YWRzLzIwMjAvMDMv/UGluLWl0LW1leGlj/YW4tc3R1ZmZlZC1z/d2VldC1wb3RhdG9l/cy13aXRoLWJsYWNr/LWJlYW5zLXZlZ2Fu/LWdsdXRlbi1mcmVl/LWVhc3ktcmVjaXBl/LTEuanBn" class="d-block w-100" alt="Stuffed Sweet Potatoes with Avocado and Black Beans"></a>
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Stuffed Sweet Potatoes with Avocado and Black Beans</h5>
+              <p><strong>Benefits: </strong>Rich in fiber, potassium, and healthy fats, promoting a healthy digestive system and supporting fetal development.</p>
+            </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    <br>
+    <br>
+    <h3>Foods For You at 3rd Trimester</h3>
+    <br>
+    <div class="food-list">
+        <div class="food-item">
+            <img src="https://imgs.search.brave.com/dKTA9oGpBXjFx8YVMY88Nlr95ZX3gBQnYrkf2V1wbwQ/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvNjA0/Mzc1NTcxL3Bob3Rv/L2ZyZXNoLXNwaW5h/Y2gtbGVhdmVzLWlu/LWNvbGFuZGVyLW9u/LXdvb2QuanBnP3M9/NjEyeDYxMiZ3PTAm/az0yMCZjPTNaTWJV/aEYxa1RSdG1FR0tE/cFFkNm0yd0M3LURt/bDhvWlVKWlA2VXRl/T1U9" alt="Spinach" width="50px" height="50px">
+            <p>Spinach <span>1 serving of spinach per week</span></p>
+        </div>
+        <div class="food-item">
+            <img src="https://imgs.search.brave.com/yErt8ah2GePShg_wVYVxTQRD0fR_avyiTZ9DdBs51ZQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdWJz/dGFja2Nkbi5jb20v/aW1hZ2UvZmV0Y2gv/d18xNDU2LGNfbGlt/aXQsZl9hdXRvLHFf/YXV0bzpnb29kLGZs/X3Byb2dyZXNzaXZl/OnN0ZWVwL2h0dHBz/Oi8vc3Vic3RhY2st/cG9zdC1tZWRpYS5z/My5hbWF6b25hd3Mu/Y29tL3B1YmxpYy9p/bWFnZXMvY2EzN2M3/NjctODQ3MC00ODc2/LWIzZTAtMjM0NTUz/ZDNkMzg3XzgxOHgx/MDI0LmpwZWc" alt="Almonds & Hazelnuts" width="50px" height="50px">
+            <p>Almonds & Hazelnuts <span>1 handful of nuts a day</span></p>
+        </div>
+        <div class="food-item">
+            <img src="https://imgs.search.brave.com/MeXjTKsNzJoSkcQgXI8K4VArodoJA4iMaAa0ttd7pM0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNTE1/Nzc3ODA4L3Bob3Rv/L3lvZ3VydC5qcGc_/cz02MTJ4NjEyJnc9/MCZrPTIwJmM9MXhO/ZjJxMGhtbmRxQWJx/eVRVVXY2Rl9HYkJo/aENaa0dIYmlPRVJ6/OTFMRT0" alt="Yogurt" width="50px" height="50px">
+            <p>Yoghurt <span>1 bowl of yogurt a day</span></p>
+        </div>
+        <div class="food-item">
+            <img src="https://imgs.search.brave.com/udePc30hig0RgvGWjExkNFMdyv6GWDNw4j2-GFJCRks/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZS5zaHV0dGVyc3Rv/Y2suY29tL2ltYWdl/LXBob3RvL2Zpc2gt/bWFya2V0LWNvdW50/ZXIta290YS1raW5h/YmFsdS00NTB3LTI1/MDYyMDEyODUuanBn" alt="Fish" width="50px" height="50px">
+            <p>Fish <span>2 servings of fish per week</span></p>
+        </div>
+    </div>
+</div>
+
+  </div>
+
+  <!-- Link to Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lean Meat Recipe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9dada;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        header{
+            background-color: transparent;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            border-bottom: 1px solid #e5aebc;
+            box-sizing: border-box;
+        }
+        header .top-bar {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: bold;
+            color: #555;
+        }
+        header .back-arrow {
+            font-size: 18px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        header .title{
+            flex: 1;
+            text-align: center;
+            font-size: 16px;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+        }
+        .recipe-card {
+            width: 800px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .recipe-card h1 {
+            font-size: 24px;
+            text-align: center;
+            color: #333;
+        }
+        .recipe-card img {
+            display: block;
+            width: 100%;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+        .section-title {
+            color: #d9534f;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .ingredients-list, .instructions-list {
+            background-color: #f2f2f2;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 5px;
+            line-height: 1.6;
+        }
+        .instructions-list {
+            list-style-type: decimal;
+        }
+        .youtube-link {
+            text-align: center;
+            display: block;
+            margin-top: 20px;
+            color: #ff0000;
+            text-decoration: none;
+        }
+        .youtube-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="recipe-card">
+        <header>
+            <a href="nutritionalChart.html" class="back-arrow">&larr;</a>
+            <h1 class="title">Lean Meat Recipe</h1>
+        </header>
+        <br>
+        <br>
+        <img src="https://imgs.search.brave.com/qnu8RWpsfF7zXJnfd9tJTx5HdAofJosRmnfFMlFqHmM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTEz/MDAwODE5Ny9waG90/by9ncmlsbGVkLWJl/ZWYtc3RlYWtzLmpw/Zz9zPTYxMng2MTIm/dz0wJms9MjAmYz1y/a2hFbWN4WlZmM3Zf/QmZ0Y2psMXhpTi0t/ekxmVjU1Q1pnUmdf/QVR4VTh3PQ" alt="Lean Meat">
+        <br>
+        <br>
+        <div class="section-title">Ingredients:</div>
+        <div class="ingredients-list">
+            <p>2 boneless, skinless chicken breasts</p>
+            <p>2 tablespoons olive oil</p>
+            <p>2 tablespoons fresh lemon juice</p>
+            <p>2 garlic cloves, minced</p>
+            <p>1 teaspoon dried oregano</p>
+            <p>Salt and pepper to taste</p>
+            <p>Fresh parsley (optional, for garnish)</p>
+            <p>Lemon wedges (optional, for serving)</p>
+        </div>
+        <br>
+        <br>
+        <div class="section-title">Instructions:</div>
+        <div class="instructions-list" >
+            <li>Marinate the chicken: In a small bowl, mix olive oil, lemon juice, minced garlic, oregano, salt, and pepper. Place the chicken breasts in a resealable plastic bag or shallow dish. Pour the marinade over the chicken, ensuring both sides are well coated. Let the chicken marinate for at least 30 minutes (up to 2 hours) in the refrigerator for best flavor.</li>
+            <li>Preheat the grill: Preheat your grill (or grill pan) to medium-high heat.</li>
+            <li>Grill the chicken: Remove the chicken from the marinade and shake off any excess. Grill the chicken for about 6-7 minutes on each side or until the internal temperature reaches 165°F (75°C).</li>
+            <li>Garnish with fresh parsley and serve with lemon wedges for an extra citrusy touch.</li>
+        </div>
+        <br>
+        <br> 
+        <a href="https://youtu.be/xR6rTrhiZVU?si=3kO8nPepNtAxd_41" class="youtube-link">Watch the recipe on YouTube</a>
+    </div>
+</body>
+</html>
