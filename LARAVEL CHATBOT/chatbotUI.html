@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Interface</title>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+</head>
+<style>
+    .chatbot-container {
+        width: 300px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .chatbot-header {
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        text-align: center;
+    }
+    
+    .chatbot-messages {
+        flex: 1;
+        padding: 10px;
+        overflow-y: auto;
+        height: 300px;
+    }
+    
+    .user-message {
+        text-align: right;
+        margin: 5px;
+        background-color: #d1e7dd;
+        padding: 5px;
+        border-radius: 5px;
+    }
+    
+    .bot-message {
+        text-align: left;
+        margin: 5px;
+        background-color: #f8d7da;
+        padding: 5px;
+        border-radius: 5px;
+    }
+    
+    input[type="text"] {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    button {
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }    
+</style>
+<body>
+    <div id="chatbot" class="chatbot-container">
+        <div class="chatbot-header">
+            <h2>Chatbot</h2>
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages"></div>
+        <input type="text" id="user-input" placeholder="Type your message..." />
+        <button id="send-button">Send</button>
+    </div>
+
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+        document.getElementById('send-button').addEventListener('click', function() {
+            const userInput = document.getElementById('user-input').value;
+            const messagesContainer = document.getElementById('chatbot-messages');
+            messagesContainer.innerHTML += `<div class="user-message">${userInput}</div>`;
+            document.getElementById('user-input').value = '';
+
+            fetch('/api/chatbot', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ message: userInput })
+            })
+            .then(response => response.json())
+            .then(data => {
+                messagesContainer.innerHTML += `<div class="bot-message">${data.reply}</div>`;
+            });
+        });
+    </script>
+</body>
+</html>
