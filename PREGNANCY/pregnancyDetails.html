@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Details</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #ffccff; /* Set the body background to pink */
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    background: white; /* Main container background is white */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header h2, .header h3 {
+    margin: 0;
+}
+
+.appointment-details {
+    margin: 20px 0;
+}
+
+.buttons {
+    margin: 20px 0;
+    position: relative; /* Position relative for dropdown */
+}
+
+button {
+    background-color: #e63946; /* Button color */
+    color: white; /* Text color for buttons */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+button:hover {
+    background-color: #d62839; /* Button hover color */
+}
+
+.dropdown {
+    display: inline-block;
+    position: relative; /* Positioning for dropdown content */
+}
+
+.dropdown-content {
+    display: none; /* Hidden by default */
+    position: absolute; /* Positioned relative to dropdown */
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1; /* Ensure dropdown is above other elements */
+    min-width: 160px; /* Set a minimum width for dropdown */
+}
+
+.dropdown-content a {
+    color: black; /* Link color */
+    padding: 12px 16px; /* Padding for links */
+    text-decoration: none; /* No underline */
+    display: block; /* Block display */
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1; /* Background on hover */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Show dropdown on hover */
+}
+
+.health-info {
+    margin-top: 30px;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-item {
+    flex: 1;
+    text-align: center;
+}
+
+</style>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Appointment with:</h2>
+            <h3>Dr. ABC DEF</h3>
+            <p>PhD Heart Surgeon</p>
+        </div>
+        <div class="appointment-details">
+            <p>Date: 04 November, 2024</p>
+            <p>Time: 16:00</p>
+        </div>
+        <div class="buttons">
+            <button class="prescription-btn">Prescription PDF</button>
+            <div class="dropdown">
+                <button class="past-prescriptions-btn">View All Past Prescriptions</button>
+                <div class="dropdown-content">
+                    <a href="path/to/prescription1.pdf" target="_blank">Prescription 1</a>
+                    <a href="path/to/prescription2.pdf" target="_blank">Prescription 2</a>
+                    <a href="path/to/prescription3.pdf" target="_blank">Prescription 3</a>
+                </div>
+            </div>
+            <button class="order-medicines-btn">Order My Medicines</button>
+        </div>
+        <div class="health-info">
+            <h4>Pregnancy Health</h4>
+            <div class="info">
+                <div class="info-item">Weight: <span>54 kg</span></div>
+                <div class="info-item">Sleep Rate: <span>7 hr/d</span></div>
+                <div class="info-item">Water: <span>3 lt/d</span></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
