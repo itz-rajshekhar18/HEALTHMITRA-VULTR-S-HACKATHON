@@ -69,7 +69,7 @@
     <div class="container">
         <img src="healthmitra_logo.png" alt="Health Mitra Logo">
         <h1>Health Mitra Registration</h1>
-        <form id="registrationForm">
+        <form id="registrationForm" enctype="multipart/form-data">
             <label for="name">Name of Patient:</label>
             <input type="text" id="name" name="name" required>
 
@@ -119,7 +119,7 @@
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    window.location.href = '/login';
+                    window.location.href = 'Account.html';
                 } else {
                     alert('Registration failed. Please try again.');
                 }
