@@ -10,6 +10,18 @@
             background-color: #ffccff;
             margin: 0;
             padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .header {
@@ -33,19 +45,21 @@
             font-size: 24px; 
         }
 
-        .container {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .appointment-header {
+            text-align: center;
+            margin-bottom: 20px;
         }
 
-        .appointment-details {
-            margin: 10px 0;
+        .appointment-header img {
+            border-radius: 50%;
+            margin-bottom: 10px;
+            width: 200px;
+            height: 200px;
         }
 
-        .buttons {
-            margin: 20px 0;
+        .appointment-details, .buttons, .health-info {
+            text-align: center;
+            margin-top: 20px;
         }
 
         .buttons button {
@@ -65,6 +79,11 @@
             background-color: #f9f9f9;
             min-width: 160px;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 10px;
+            text-align: center;
             z-index: 1;
         }
 
@@ -90,25 +109,36 @@
         .info-item {
             margin: 5px 0;
         }
+
+        hr {
+            border: none;
+            height: 1px;
+            background-color: #ddd;
+            margin: 20px 0;
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <a href="pregnancy.html" class="back-arrow">&larr;</a>
-        <h1>PREGNANCY - DETAILS</h1>
-    </div>
     <div class="container">
         <div class="header">
+            <a href="pregnancy.html" class="back-arrow">&larr;</a>
+            <h1>DETAILS</h1>
+        </div>
+        <hr>
+        <div class="appointment-header">
+            <img src="https://imgs.search.brave.com/glPkTQH4dxFSapEFzu6lNfYyPjp0vxO0a3cq9tPoCGk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAzLzEzLzc3Lzgy/LzM2MF9GXzMxMzc3/ODI1MF9ZMG81Y2Fu/Nk1BNDkwTnQ3RzZw/MDNaZnU1ZkttV0NJ/di5qcGc" alt="Doctor's IMG">
             <h2>Appointment with:</h2>
             <h3>Dr. ABC DEF</h3>
-            <p>PhD Heart Surgeon</p>
+            <p>PhD Gynaecologist</p>
         </div>
+        <hr>
         <div class="appointment-details">
             <p>Date: 04 November, 2024</p>
             <p>Time: 16:00</p>
         </div>
+        <hr>
         <div class="buttons">
-            <button class="prescription-btn">Prescription PDF</button>
+            <button class="prescription-btn">Latest Prescription PDF</button>
             <div class="dropdown">
                 <button class="past-prescriptions-btn">View All Past Prescriptions</button>
                 <div class="dropdown-content">
@@ -119,6 +149,7 @@
             </div>
             <button class="order-medicines-btn">Order My Medicines</button>
         </div>
+        <hr>
         <div class="health-info">
             <h4>Pregnancy Health</h4>
             <div class="info">
@@ -131,6 +162,18 @@
     <script>
         document.querySelector('.prescription-btn').addEventListener('click', function() {
             alert('Redirecting to the prescription PDF');
+        });
+        document.querySelector('.order-medicines-btn').addEventListener('click', function() {
+            // Confirm action with user
+            let confirmOrder = confirm("Do you really want to order the medicine?");
+            
+            if (confirmOrder) {
+                // If confirmed, show success message
+                alert("Your medicines have been successfully ordered!");
+            } else {
+                // If cancelled, show cancellation message
+                alert("Order cancelled. Medicines have not been ordered.");
+            }
         });
     </script>
 </body>
