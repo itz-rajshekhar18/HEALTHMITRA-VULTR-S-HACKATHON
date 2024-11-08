@@ -1,91 +1,72 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const mysql = require('mysql2');
+const bodyParser = require('body-parser');
 const multer = require('multer');
 const path = require('path');
-const fs = require('fs');
+const cors = require('cors');
 
 const app = express();
-const port = 3000;
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(cors());
 
-// Ensure uploads directory exists
-const uploadDir = path.join(__dirname, 'uploads');
-if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir);
-}
-
-// Connect to MongoDB database
-mongoose.connect('mongodb://localhost/healthmitra', { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('Connected to MongoDB'))
-    .catch((err) => console.error('MongoDB connection error:', err));
-
-// Define user schema
-const userSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    mobile: { type: String, required: true },
-    aadhar: { type: String, required: true },
-    aadharFile: { type: String },
-    differentlyAbled: { type: Boolean, default: false }
-});
-
-const User = mongoose.model('User', userSchema);
-
-// Configure Multer for file upload
+// Set up file storage with multer
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        console.log("Multer destination folder:", uploadDir);
-        cb(null, 'uploads/');
+        cb(null, 'uploads/');  // Ensure this directory exists
     },
     filename: (req, file, cb) => {
-        const ext = path.extname(file.originalname);
-        console.log("Multer generated filename:", Date.now() + ext);
-        cb(null, Date.now() + ext);
+        cb(null, Date.now() + path.extname(file.originalname)); // Unique filename
+    }
+});
+const upload = multer({ storage: storage });
+
+// MySQL database connection
+const db = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    port: '3305',
+    password: 'newpassword',
+    database: 'healthmitra'
+});
+
+db.connect((err) => {
+    if (err) {
+        console.error('Database connection failed:', err);
+    } else {
+        console.log('Connected to MySQL database');
     }
 });
 
-const upload = multer({ storage });
+// API endpoint to handle form submission
+const fs = require('fs');
 
-// Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// Ensure the uploads folder exists
+const uploadDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
+}
 
-// Registration route
-app.post('/register', upload.single('aadharFile'), async (req, res) => {
-    // Log received form data
-    console.log("Form data received:", req.body);
-    console.log("File data received:", req.file);
-
+app.post('/register', upload.single('aadharFile'), (req, res) => {
     const { name, email, mobile, aadhar, differentlyAbled } = req.body;
-    const aadharFile = req.file;
+    const aadharFile = req.file ? req.file.path : null; // Path to uploaded file
 
-    try {
-        // Check if the file is available
-        if (!aadharFile) {
-            console.log("No Aadhar file received");
-            return res.json({ success: false, message: 'Aadhar file is required' });
+    const query = 'INSERT INTO patients (name, email, mobile, aadhar, aadharFile, differentlyAbled) VALUES (?, ?, ?, ?, ?, ?)';
+    db.query(query, [name, email, mobile, aadhar, aadharFile, differentlyAbled ? 1 : 0], (err, result) => {
+        if (err) {
+            console.error('Error inserting data into MySQL:', err);
+            res.status(500).json({ success: false, message: 'Database error' });
+        } else {
+            res.json({ success: true, message: 'Registration successful' });
         }
-
-        // Create the user in the database
-        const user = new User({
-            name,
-            email,
-            mobile,
-            aadhar,
-            aadharFile: aadharFile.filename,
-            differentlyAbled
-        });
-
-        // Save the user in MongoDB
-        const savedUser = await user.save();
-        console.log("User saved:", savedUser); // Log saved user object
-
-        return res.json({ success: true, message: 'Registration successful' });
-    } catch (error) {
-        console.error('Error during registration:', error);
-        return res.json({ success: false, message: 'An error occurred' });
-    }
+    });
 });
+;
 
-app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
+// Serve static files (HTML, CSS, JS) from 'public' folder
+app.use(express.static('public'));
+
+// Start the server
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
 });
