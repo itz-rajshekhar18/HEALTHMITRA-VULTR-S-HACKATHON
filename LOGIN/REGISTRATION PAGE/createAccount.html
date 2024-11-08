@@ -97,38 +97,59 @@
     </div>
 
     <script>
-        document.getElementById('registrationForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const mobile = document.getElementById('mobile').value;
-            const aadhar = document.getElementById('aadhar').value;
-            const aadharFile = document.getElementById('aadharFile').files[0];
-            const differentlyAbled = document.getElementById('differentlyAbled').checked;
-            const formData = new FormData();
-            formData.append('name', name);
-            formData.append('email', email);
-            formData.append('mobile', mobile);
-            formData.append('aadhar', aadhar);
-            formData.append('aadharFile', aadharFile);
-            formData.append('differentlyAbled', differentlyAbled);
-            fetch('/register', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    window.location.href = 'Account.html';
-                } else {
-                    alert('Registration failed. Please try again.');
+            document.getElementById('registrationForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+        
+                // Retrieve form values
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const mobile = document.getElementById('mobile').value;
+                const aadhar = document.getElementById('aadhar').value;
+                const aadharFile = document.getElementById('aadharFile').files[0];
+                const differentlyAbled = document.getElementById('differentlyAbled').checked;
+        
+                // Logging values for debugging
+                console.log('Name:', name);
+                console.log('Email:', email);
+                console.log('Mobile:', mobile);
+                console.log('Aadhar:', aadhar);
+                console.log('Aadhar File:', aadharFile);
+                console.log('Differently Abled:', differentlyAbled);
+        
+                // Check if file is selected
+                if (!aadharFile) {
+                    alert("Please select an Aadhar file before submitting.");
+                    return;
                 }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('An error occurred. Please try again later.');
+        
+                // Create FormData and append values
+                const formData = new FormData();
+                formData.append('name', name);
+                formData.append('email', email);
+                formData.append('mobile', mobile);
+                formData.append('aadhar', aadhar);
+                formData.append('aadharFile', aadharFile);
+                formData.append('differentlyAbled', differentlyAbled);
+        
+                // Send form data to the server at port 3000
+                fetch('http://localhost:3000/register', { // Port 3000 specified here
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Server response:', data);
+                    if (data.success) {
+                        window.location.href = 'Account.html';
+                    } else {
+                        alert('Registration failed. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred. Please try again later.');
+                });
             });
-        });
     </script>
 </body>
 </html> 
